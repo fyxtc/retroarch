@@ -6035,7 +6035,7 @@ void direct_open(int* argc, char *argv[]){
       // 注意命名，有的是nes，有的是zip
       char* roms[] = {"smb.nes", "zzjb.zip", "tstd1.zip", "tstd2.zip", "sgz.zip", "bxsg.zip", NULL};
       fill_pathname_join(core_path, g_defaults.dirs[DEFAULT_DIR_CORE], "nestopia_libretro_ios.dylib", sizeof(g_defaults.dirs[DEFAULT_DIR_CORE]));
-      fill_pathname_join(game_path, g_defaults.dirs[DEFAULT_DIR_CORE], roms[5], sizeof(g_defaults.dirs[DEFAULT_DIR_CORE]));
+      fill_pathname_join(game_path, g_defaults.dirs[DEFAULT_DIR_CORE], roms[0], sizeof(g_defaults.dirs[DEFAULT_DIR_CORE]));
       argv[2] = core_path;
       argv[3] = game_path;
 
@@ -10840,6 +10840,7 @@ static void input_overlay_load_active(input_overlay_t *ol, float opacity)
  **/
 static bool inside_hitbox(const struct overlay_desc *desc, float x, float y)
 {
+   // fuck 触摸碰撞检测
    if (!desc)
       return false;
 

@@ -47,9 +47,6 @@ static bool is_short_option(const char *str)
 
 static bool is_long_option(const char *str)
 {
-    printf("fuck %s\n", str);
-    printf("fuck %c\n", str[0]);
-    printf("fuck %c\n", str[1]);
    return str[0] == '-' && str[1] == '-';
 }
 

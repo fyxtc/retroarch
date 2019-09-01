@@ -79,22 +79,27 @@ static void task_overlay_load_desc_image(
    if (config_get_path(conf, overlay_desc_image_key,
             image_path, sizeof(image_path)))
    {
-      struct texture_image image_tex;
-      char path[PATH_MAX_LENGTH];
+      // retropad.cfg 14以上的按键全部隐藏了
+       if(desc_idx > 14){
+           printf("skip overlay image %s\n", image_path);
+       }else{
+         struct texture_image image_tex;
+         char path[PATH_MAX_LENGTH];
 
-      path[0] = '\0';
+         path[0] = '\0';
 
-      fill_pathname_resolve_relative(path, loader->overlay_path,
-            image_path, sizeof(path));
+         fill_pathname_resolve_relative(path, loader->overlay_path,
+               image_path, sizeof(path));
 
-      image_tex.supports_rgba = loader->driver_rgba_support;
+         image_tex.supports_rgba = loader->driver_rgba_support;
 
-      if (image_texture_load(&image_tex, path))
-      {
-         input_overlay->load_images[input_overlay->load_images_size++] = image_tex;
-         desc->image       = image_tex;
-         desc->image_index = input_overlay->load_images_size - 1;
-      }
+         if (image_texture_load(&image_tex, path))
+         {
+            input_overlay->load_images[input_overlay->load_images_size++] = image_tex;
+            desc->image       = image_tex;
+            desc->image_index = input_overlay->load_images_size - 1;
+         }
+       }
    }
 
    input_overlay->pos ++;
@@ -782,6 +787,8 @@ bool task_push_overlay_load_default(
 
    loader->overlay_hide_in_menu = overlay_hide_in_menu;
    loader->overlay_enable       = input_overlay_enable;
+   // fuck 隐藏屏幕键盘
+   // loader->overlay_enable       = false;
    loader->overlay_opacity      = input_overlay_opacity;
    loader->overlay_scale        = input_overlay_scale;
    loader->conf                 = conf;
