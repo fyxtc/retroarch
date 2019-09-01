@@ -6036,8 +6036,8 @@ void direct_open(int* argc, char *argv[]){
    bool is_open = true;
    // printf("DEFAULT_DIR_CORE: %s\n", g_defaults.dirs[DEFAULT_DIR_CORE]);
 
-   enum open_core_type core_type = CORE_TYPE_NES;
-   // enum open_core_type core_type = CORE_TYPE_MAME;
+   // enum open_core_type core_type = CORE_TYPE_NES;
+   enum open_core_type core_type = CORE_TYPE_MAME;
 
    if(is_open){
       *argc = 4;
@@ -6056,7 +6056,7 @@ void direct_open(int* argc, char *argv[]){
             break;
          }
          case CORE_TYPE_MAME:{
-            core_name = "fbalpha2012_neogeo_libretro_ios.dylib";
+            core_name = "fbalpha_libretro_ios.dylib";
             char* roms[] = {"kof97.zip", "kov.zip"};
             game_name = roms[1];
             break;
