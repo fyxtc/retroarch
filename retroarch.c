@@ -4137,6 +4137,8 @@ static bool command_event_save_config(
       const char *config_path,
       char *s, size_t len)
 {
+   // fuck ignore config
+   return true;
    char log[PATH_MAX_LENGTH];
    bool path_exists = !string_is_empty(config_path);
    const char *str  = path_exists ? config_path :
@@ -6023,29 +6025,55 @@ void main_exit(void *args)
 #endif
 }
 
+enum open_core_type {
+   CORE_TYPE_NES,
+   CORE_TYPE_MAME,
+   CORE_TYPE_GB,
+   CORE_TYPE_GBA,
+};
+
 void direct_open(int* argc, char *argv[]){
    bool is_open = true;
-   printf("DEFAULT_DIR_CORE: %s\n", g_defaults.dirs[DEFAULT_DIR_CORE]);
-   if(is_open){
-      char* core_path = (char*)malloc(PATH_MAX_LENGTH * sizeof(char));;
-      char* game_path= (char*)malloc(PATH_MAX_LENGTH * sizeof(char));;
+   // printf("DEFAULT_DIR_CORE: %s\n", g_defaults.dirs[DEFAULT_DIR_CORE]);
 
+   enum open_core_type core_type = CORE_TYPE_NES;
+   // enum open_core_type core_type = CORE_TYPE_MAME;
+
+   if(is_open){
       *argc = 4;
       argv[1] = "-L";
-      // 注意命名，有的是nes，有的是zip
-      char* roms[] = {"smb.nes", "zzjb.zip", "tstd1.zip", "tstd2.zip", "sgz.zip", "bxsg.zip", NULL};
-      fill_pathname_join(core_path, g_defaults.dirs[DEFAULT_DIR_CORE], "nestopia_libretro_ios.dylib", sizeof(g_defaults.dirs[DEFAULT_DIR_CORE]));
-      fill_pathname_join(game_path, g_defaults.dirs[DEFAULT_DIR_CORE], roms[0], sizeof(g_defaults.dirs[DEFAULT_DIR_CORE]));
+      char* core_path = (char*)malloc(PATH_MAX_LENGTH * sizeof(char));
+      char* game_path= (char*)malloc(PATH_MAX_LENGTH * sizeof(char));
+      char* core_name = (char*)malloc(PATH_MAX_LENGTH * sizeof(char));
+      char* game_name = (char*)malloc(PATH_MAX_LENGTH * sizeof(char));
+
+      switch(core_type){
+         case CORE_TYPE_NES:{
+            core_name = "nestopia_libretro_ios.dylib";
+            // 注意命名，有的是nes，有的是zip
+            char* roms[] = {"smb.nes", "zzjb.zip", "tstd1.zip", "tstd2.zip", "sgz.zip", "bxsg.zip", NULL};
+            game_name = roms[1];
+            break;
+         }
+         case CORE_TYPE_MAME:{
+            core_name = "fbalpha2012_neogeo_libretro_ios.dylib";
+            char* roms[] = {"kof97.zip", "kov.zip"};
+            game_name = roms[1];
+            break;
+         }
+      }
+      fill_pathname_join(core_path, g_defaults.dirs[DEFAULT_DIR_CORE], core_name, sizeof(g_defaults.dirs[DEFAULT_DIR_CORE]));
+      fill_pathname_join(game_path, g_defaults.dirs[DEFAULT_DIR_CORE], game_name, sizeof(g_defaults.dirs[DEFAULT_DIR_CORE]));
       argv[2] = core_path;
       argv[3] = game_path;
 
-      printf("start >>>>>>>>>>>>>>\n");
-      printf("argc count %d\n", *argc);
-      for (int i = 0; i < (unsigned)(*argc); i++)
-      {
-         printf("argv %d: %s\n", i, argv[i]);
-      }
-      printf("fin >>>>>>>>>>>>>>\n");
+      // printf("start >>>>>>>>>>>>>>\n");
+      // printf("argc count %d\n", *argc);
+      // for (int i = 0; i < (unsigned)(*argc); i++)
+      // {
+      //    printf("argv %d: %s\n", i, argv[i]);
+      // }
+      // printf("fin >>>>>>>>>>>>>>\n");
    }
 }
 
@@ -21744,12 +21772,6 @@ static void retroarch_parse_input_and_config(int argc, char *argv[])
    bool explicit_menu    = false;
    global_t  *global     = &g_extern;
 
-   #ifdef HAVE_DYNAMIC
-      printf("fuck HAVE_DYNAMIC yes");
-   #else
-      printf("fuck HAVE_DYNAMIC no");
-   #endif
-
    const struct option opts[] = {
 #ifdef HAVE_DYNAMIC
       { "libretro",           1, NULL, 'L' },
@@ -22355,7 +22377,6 @@ static void retroarch_parse_input_and_config(int argc, char *argv[])
       if (subsystem_path_is_empty){
          path_set(RARCH_PATH_NAMES, (const char*)argv[optind]);
       }else{
-         printf("fuck load rom path2 \n", argv[optind]);
          path_set_special(argv + optind, argc - optind);
 
       }

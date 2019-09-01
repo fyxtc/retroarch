@@ -354,10 +354,11 @@ static int16_t cocoa_input_state(void *data,
             if ((uint16_t)joykey != NO_BTN && apple->joypad->button(
                      joypad_info.joy_idx, (uint16_t)joykey))
                return true;
+             // 来到这里，可能是core壳和rom不匹配
             if (((float)abs(apple->joypad->axis(joypad_info.joy_idx, joyaxis)) / 0x8000) > joypad_info.axis_threshold)
                return true;
 #ifdef HAVE_MFI
-             // 来到这里，可能是rom content没取到，可能是.zip写成了.nes? 总之应该是路径不对
+             // 来到这里，可能是rom content没取到，可能是.zip写成了.nes? 总之应该是rom路径不对
             if ((uint16_t)joykey != NO_BTN && apple->sec_joypad->button(joypad_info.joy_idx, (uint16_t)joykey))
                return true;
             if (((float)abs(apple->sec_joypad->axis(joypad_info.joy_idx, joyaxis)) / 0x8000) > joypad_info.axis_threshold)
