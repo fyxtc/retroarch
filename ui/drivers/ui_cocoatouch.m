@@ -466,6 +466,7 @@ static char** getArray(NSArray* a_array)
 
 - (IBAction)showPauseMenu:(id)sender
 {
+  return;
    rarch_enable_ui();
 
 #if TARGET_OS_IOS

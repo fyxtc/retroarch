@@ -3029,6 +3029,7 @@ static bool gl2_frame(void *data, const void *frame,
 #endif
 
 #if defined(HAVE_MENU)
+   // fuck hide menu 隐藏菜单
    if (gl->menu_texture_enable)
    {
       menu_driver_frame(video_info);

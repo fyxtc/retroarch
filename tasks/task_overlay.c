@@ -80,8 +80,10 @@ static void task_overlay_load_desc_image(
             image_path, sizeof(image_path)))
    {
       // retropad.cfg 14以上的按键全部隐藏了
-       if(desc_idx > 14){
-           printf("skip overlay image %s\n", image_path);
+       int nes_max = 14;
+       // nes_max = 100;
+       if(desc_idx > nes_max){
+           RARCH_LOG("fuck skip overlay image %s\n", image_path);
        }else{
          struct texture_image image_tex;
          char path[PATH_MAX_LENGTH];
