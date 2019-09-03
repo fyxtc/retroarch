@@ -85,7 +85,7 @@
 		696012F119F3389A006A1088 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		69D31DE31A547EC800EF4C92 /* iOS/Resources/Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iOS/Resources/Media.xcassets; sourceTree = SOURCE_ROOT; };
 		83EB675F19EEAF050096F441 /* iOS/modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = iOS/modules; sourceTree = SOURCE_ROOT; };
-		9204BE2B1D319EF300BD49DB /* RetroArchiOS11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetroArchiOS11.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9204BE2B1D319EF300BD49DB /* SoulSim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoulSim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9222F2082315DAD50097C0FD /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		926C77D721FD1E6500103EDE /* RetroArchTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetroArchTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		926C77E221FD1E6700103EDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -297,7 +297,7 @@
 		96AFAE2616C1D4EA009DE44C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9204BE2B1D319EF300BD49DB /* RetroArchiOS11.app */,
+				9204BE2B1D319EF300BD49DB /* SoulSim.app */,
 				926C77D721FD1E6500103EDE /* RetroArchTV.app */,
 			);
 			name = Products;
@@ -374,7 +374,7 @@
 			);
 			name = RetroArchiOS11;
 			productName = RetroArch;
-			productReference = 9204BE2B1D319EF300BD49DB /* RetroArchiOS11.app */;
+			productReference = 9204BE2B1D319EF300BD49DB /* SoulSim.app */;
 			productType = "com.apple.product-type.application";
 		};
 		926C77D621FD1E6500103EDE /* RetroArchTV */ = {
@@ -402,7 +402,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = RetroArch;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					9204BE091D319EF300BD49DB = {
 						DevelopmentTeam = 5PP5GYZ9DY;
@@ -414,7 +414,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 96AFAE1F16C1D4EA009DE44C /* Build configuration list for PBXProject "RetroArch_iOS11" */;
+			buildConfigurationList = 96AFAE1F16C1D4EA009DE44C /* Build configuration list for PBXProject "SoulSim" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -561,8 +561,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				COMPILER_INDEX_STORE_ENABLE = NO;
 				DEVELOPMENT_TEAM = 5PP5GYZ9DY;
 				ENABLE_BITCODE = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = (
@@ -574,7 +576,7 @@
 					../../deps,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_NO_PIE = YES;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
@@ -633,7 +635,7 @@
 					"-DHAVE_KEYMAPPER",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.soulsim.tstd;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SoulSim;
 				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = arm64;
 				WARNING_CFLAGS = "-Wno-invalid-source-encoding";
@@ -650,8 +652,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
+				COMPILER_INDEX_STORE_ENABLE = NO;
 				DEVELOPMENT_TEAM = 5PP5GYZ9DY;
 				ENABLE_BITCODE = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = (
@@ -663,9 +667,74 @@
 					../../deps,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_NO_PIE = YES;
 				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-mllvm",
+					"-enable-bcfobf",
+					"-mllvm",
+					"-enable-cffobf",
+					"-mllvm",
+					"-enable-splitobf",
+					"-mllvm",
+					"-enable-subobf",
+					"-mllvm",
+					"-enable-acdobf",
+					"-mllvm",
+					"-enable-indibran",
+					"-mllvm",
+					"-enable-strcry",
+					"-mllvm",
+					"-enable-funcwra",
+					"-mllvm",
+					"-enable-allobf",
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"-DNDEBUG",
+					"-DDONT_WANT_ARM_OPTIMIZATIONS",
+					"-DHAVE_NETWORKGAMEPAD",
+					"-DHAVE_STB_FONT",
+					"-DHAVE_HID",
+					"-DHAVE_NETWORKING",
+					"-DHAVE_NETPLAYDISCOVERY",
+					"-DHAVE_RUNAHEAD",
+					"-DHAVE_TRANSLATE",
+					"-DHAVE_GRIFFIN",
+					"-DHAVE_STB_VORBIS",
+					"-DHAVE_MINIUPNPC",
+					"-DHAVE_BUILTINMINIUPNPC",
+					"-DHAVE_UPDATE_ASSETS",
+					"-DHAVE_LANGEXTRA",
+					"-DHAVE_CHEEVOS",
+					"-DRC_DISABLE_LUA",
+					"-DHAVE_IMAGEVIEWER",
+					"-DHAVE_RGUI",
+					"-DHAVE_MENU",
+					"-DHAVE_MENU_WIDGETS",
+					"-DHAVE_LIBRETRODB",
+					"-DHAVE_AUDIOMIXER",
+					"-DIOS",
+					"-DHAVE_DYNAMIC",
+					"-DHAVE_OPENGL",
+					"-DHAVE_OPENGLES",
+					"-DHAVE_OPENGLES2",
+					"-DHAVE_CC_RESAMPLER",
+					"-DHAVE_GLSL",
+					"-DINLINE=inline",
+					"-DHAVE_THREADS",
+					"-D__LIBRETRO__",
+					"-DRARCH_MOBILE",
+					"-std=gnu99",
+					"-DHAVE_COREAUDIO",
+					"-DHAVE_OVERLAY",
+					"-DHAVE_ZLIB",
+					"-DHAVE_RPNG",
+					"-DHAVE_RJPEG",
+					"-DHAVE_RBMP",
+					"-DHAVE_RTGA",
+					"-DHAVE_COCOATOUCH",
+					"-DHAVE_MAIN",
+				);
 				"OTHER_CFLAGS[arch=*]" = (
 					"-DNS_BLOCK_ASSERTIONS=1",
 					"-DNDEBUG",
@@ -724,7 +793,7 @@
 					"-DHAVE_KEYMAPPER",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.soulsim.tstd;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SoulSim;
 				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = arm64;
 				WARNING_CFLAGS = "-Wno-invalid-source-encoding";
@@ -1143,7 +1212,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		96AFAE1F16C1D4EA009DE44C /* Build configuration list for PBXProject "RetroArch_iOS11" */ = {
+		96AFAE1F16C1D4EA009DE44C /* Build configuration list for PBXProject "SoulSim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96AFAE5216C1D4EA009DE44C /* Debug */,

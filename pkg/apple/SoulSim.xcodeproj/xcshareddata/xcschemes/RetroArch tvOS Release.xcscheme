@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9204BE091D319EF300BD49DB"
-               BuildableName = "RetroArchiOS11.app"
-               BlueprintName = "RetroArchiOS11"
-               ReferencedContainer = "container:RetroArch_iOS11.xcodeproj">
+               BlueprintIdentifier = "926C77D621FD1E6500103EDE"
+               BuildableName = "RetroArchTV.app"
+               BlueprintName = "RetroArchTV"
+               ReferencedContainer = "container:SoulSim.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9204BE091D319EF300BD49DB"
-            BuildableName = "RetroArchiOS11.app"
-            BlueprintName = "RetroArchiOS11"
-            ReferencedContainer = "container:RetroArch_iOS11.xcodeproj">
+            BlueprintIdentifier = "926C77D621FD1E6500103EDE"
+            BuildableName = "RetroArchTV.app"
+            BlueprintName = "RetroArchTV"
+            ReferencedContainer = "container:SoulSim.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9204BE091D319EF300BD49DB"
-            BuildableName = "RetroArchiOS11.app"
-            BlueprintName = "RetroArchiOS11"
-            ReferencedContainer = "container:RetroArch_iOS11.xcodeproj">
+            BlueprintIdentifier = "926C77D621FD1E6500103EDE"
+            BuildableName = "RetroArchTV.app"
+            BlueprintName = "RetroArchTV"
+            ReferencedContainer = "container:SoulSim.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9204BE091D319EF300BD49DB"
-            BuildableName = "RetroArchiOS11.app"
-            BlueprintName = "RetroArchiOS11"
-            ReferencedContainer = "container:RetroArch_iOS11.xcodeproj">
+            BlueprintIdentifier = "926C77D621FD1E6500103EDE"
+            BuildableName = "RetroArchTV.app"
+            BlueprintName = "RetroArchTV"
+            ReferencedContainer = "container:SoulSim.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

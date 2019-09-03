@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:RetroArch.xcodeproj">
+      location = "self:/Users/hikaru/work/retroarch/pkg/apple/SoulSim.xcodeproj">
    </FileRef>
 </Workspace>
