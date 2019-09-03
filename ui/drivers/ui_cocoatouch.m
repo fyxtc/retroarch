@@ -356,6 +356,7 @@ static char** getArray(NSArray* a_array)
    // int argc = [argv_ios count];
    // char** argv = getArray(argv_ios);
 
+  // is_long_option 异常解决，自定义argv
   int argc = 4;
   char* argv[] = {"retroarch", "-L", "core", "rom", NULL};
 

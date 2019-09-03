@@ -6034,10 +6034,11 @@ enum open_core_type {
 
 void direct_open(int* argc, char *argv[]){
    bool is_open = true;
+   // bool is_open = false;
    // printf("DEFAULT_DIR_CORE: %s\n", g_defaults.dirs[DEFAULT_DIR_CORE]);
 
-   // enum open_core_type core_type = CORE_TYPE_NES;
-   enum open_core_type core_type = CORE_TYPE_MAME;
+   enum open_core_type core_type = CORE_TYPE_NES;
+   // enum open_core_type core_type = CORE_TYPE_MAME;
 
    if(is_open){
       *argc = 4;
@@ -6051,14 +6052,14 @@ void direct_open(int* argc, char *argv[]){
          case CORE_TYPE_NES:{
             core_name = "nestopia_libretro_ios.dylib";
             // 注意命名，有的是nes，有的是zip
-            char* roms[] = {"smb.nes", "zzjb.zip", "tstd1.zip", "tstd2.zip", "sgz.zip", "bxsg.zip", NULL};
-            game_name = roms[1];
+            char* roms[] = {"tstd2.zip", "smb.nes", "zzjb.zip", "tstd1.zip", "sgz.zip", "bxsg.zip", NULL};
+            game_name = roms[0];
             break;
          }
          case CORE_TYPE_MAME:{
             core_name = "fbalpha_libretro_ios.dylib";
             char* roms[] = {"kof97.zip", "kov.zip"};
-            game_name = roms[1];
+            game_name = roms[0];
             break;
          }
       }
